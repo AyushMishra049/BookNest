@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Order Success</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<style>
+
+body{
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:Arial;
+}
+
+.success-box{
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:350px;
+}
+
+.success-icon{
+    font-size:60px;
+    color:green;
+}
+
+.btn-home{
+    margin-top:20px;
+}
+
+.btn-status{
+    margin-top:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="success-box">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h2 class="mt-3">
+        Order Placed Successfully
+    </h2>
+
+    <p>
+        Thank you for shopping with us.
+    </p>
+
+    <!-- Continue Shopping Button -->
+
+    <a href="/books"
+       class="btn btn-dark w-100 btn-home">
+
+       Continue Shopping
+
+    </a>
+
+    <!-- Check Order Status Button -->
+
+    <a href="/orders"
+       class="btn btn-success w-100 btn-status">
+
+       Check Order Status
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

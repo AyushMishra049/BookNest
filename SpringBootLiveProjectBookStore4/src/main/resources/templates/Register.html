@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Library System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 380px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1a252f;
+        }
+
+        .login-link {
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #ff5e62;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>📝 Register</h2>
+	
+	<div th:if="${successMsg}">
+		<h3 style="color: green;" th:text="${successMsg}"></h3>
+	</div>
+	<div th:if="${errorMsg}">
+		<h3 style="color: red;" th:text="${errorMsg}"></h3>
+	</div>
+
+    <form th:action="@{/register}" th:object="${user}" method="post">
+
+        <!-- Role -->
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="USER">User</option>
+        </select>
+
+        <!-- Name -->
+        <input type="text" name="name" placeholder="Enter Full Name" required>
+
+        <!-- Email -->
+        <input type="email" name="email" placeholder="Enter Email" required>
+		
+		<!-- Optional Fields -->
+		<input type="text" name="phone" placeholder="Phone Number" required>
+
+        <!-- Password -->
+        <input type="password" name="password" placeholder="Create Password" required>
+
+  
+        <!-- Submit -->
+        <button type="submit">Register</button>
+
+    </form>
+
+    <!-- Login Link -->
+    <div class="login-link">
+        <p>Already have an account? 
+            <a th:href="@{/login}">Login here</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

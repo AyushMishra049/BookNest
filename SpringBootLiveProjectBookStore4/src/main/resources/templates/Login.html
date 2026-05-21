@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Library System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1a252f;
+        }
+
+        .register {
+            margin-top: 15px;
+        }
+
+        .register a {
+            color: #5b86e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>🔐 Login</h2>
+	<div th:if="${successMsg}">
+		<h3 style="color: green;" th:text="${successMsg}"></h3>
+	</div>
+	<div th:if="${errorMsg}">
+		<h3 style="color: red;" th:text="${errorMsg}"></h3>
+	</div>
+
+    <form th:action="@{/login}" th:object="${user}" method="post">
+
+        <!-- Role Selection -->
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="ADMIN">Admin</option>
+            <option value="USER">User</option>
+        </select>
+
+        <!-- Email -->
+        <input type="email" name="email" placeholder="Enter Email" required>
+
+        <!-- Password -->
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <!-- Error Message -->
+        <p class="error" th:text="${error}"></p>
+
+        <!-- Login Button -->
+        <button type="submit">Login</button>
+
+    </form>
+
+    <!-- Register Link -->
+    <div class="register">
+        <p>Don't have an account? 
+            <a th:href="@{/register}">Register here</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
